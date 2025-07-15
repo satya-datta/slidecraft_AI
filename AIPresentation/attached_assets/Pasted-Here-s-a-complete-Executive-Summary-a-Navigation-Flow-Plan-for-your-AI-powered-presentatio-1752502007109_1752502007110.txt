@@ -1,0 +1,155 @@
+Here’s a **complete Executive Summary** + a **Navigation Flow Plan** for your AI-powered presentation app — **SlideCraft AI** — specifically tailored for prompting a tool like **Replit**, **Cursor**, or even your own documentation.
+
+---
+
+## 📄 **Executive Summary – SlideCraft AI**
+
+**SlideCraft AI** is a modern, AI-native web application that enables users to create professional, slide-based presentations from natural language prompts, uploaded documents, and images. Inspired by platforms like **Gamma.ai**, it aims to democratize slide design by giving users control over content, visuals, and structure — enhanced with free, open-source LLMs such as **Mistral**, **Zephyr**, or **Command R+** via APIs like **Groq**, **Together.ai**, or **OpenRouter**.
+
+---
+
+### 🧠 Core Problem Solved:
+
+Non-designers and business users waste time formatting slides. AI tools are either paywalled or too basic. **SlideCraft AI** solves this by:
+
+* Letting users describe their intent in plain text
+* Supporting full customization per slide
+* Using AI to suggest and improve content
+* Letting users control layout, imagery, and export
+
+---
+
+### ✨ Core Features:
+
+| Feature                             | Description                                             |
+| ----------------------------------- | ------------------------------------------------------- |
+| 🧾 Prompt-to-Outline                | Turn prompt + uploaded docs into slide outline          |
+| 📝 Editable Outline                 | User edits title/bullets for each slide                 |
+| 🖼️ Slide-by-slide Image Attachment | Upload multiple images, choose layout                   |
+| 🧠 Slide Re-Prompt                  | Per-slide AI rewrite with user prompt                   |
+| 🎨 Theme Selector                   | Select from modern, responsive design templates         |
+| 📤 Export                           | Export slides as `.pptx` or `.pdf` using open libraries |
+
+---
+
+### 💡 Why It Stands Out:
+
+* Free + Open LLM integration (no need for GPT-4 subscription)
+* Full **slide-level AI prompting**
+* User-controlled layout and image placement
+* Easy export with consistent styles
+* Built with open-source tools (Next.js, Tailwind CSS, PptxGenJS)
+
+---
+
+## 🧭 Platform Navigation (UI Flow + Page/Component Map)
+
+```
+┌────────────────────┐
+│     /index.tsx     │  ← Home Page
+│  - CTA: "Get Started"
+└────────────────────┘
+          ↓
+┌────────────────────┐
+│   /builder.tsx     │  ← Slide Builder
+└────────────────────┘
+
+  🧩 COMPONENTS (On builder page):
+
+  ┌────────────────────────────┐
+  │ PromptInput.tsx            │ ← Prompt box + document uploader
+  └────────────────────────────┘
+
+          ↓ click “Generate Outline”
+
+  ┌────────────────────────────┐
+  │ OutlineEditor.tsx          │ ← Editable slide outline (map of SlideCard)
+  └────────────────────────────┘
+
+    ⤷ inside OutlineEditor:
+
+    ┌────────────────────────┐
+    │ SlideCard.tsx          │ ← title, bullets, image uploader, dropdown
+    │                        │ - “Re-prompt this slide” button
+    └────────────────────────┘
+
+    ┌────────────────────────┐
+    │ SlidePromptModal.tsx   │ ← AI rewriter modal (for 1 slide)
+    └────────────────────────┘
+
+    ┌────────────────────────┐
+    │ ImageUploader.tsx      │ ← Multi-upload, stores per slide
+    └────────────────────────┘
+
+  ┌────────────────────────────┐
+  │ ThemeSelector.tsx          │ ← Card or dropdown to change themes
+  └────────────────────────────┘
+
+  ┌────────────────────────────┐
+  │ ExportButtons.tsx          │ ← Export to PDF / PPTX
+  └────────────────────────────┘
+```
+
+---
+
+## ⚙️ Developer Setup Summary (for Replit or Cursor prompt):
+
+**Tech Stack:**
+
+* `Next.js + Tailwind CSS`
+* Backend: `Node.js + Express`, `multer`, `pdf-parse`, `mammoth`, `textract`
+* Export: `PptxGenJS`, `html2pdf.js`
+* Free LLM APIs: `Groq`, `OpenRouter`, `Together.ai`
+* Optional: `Cloudinary` for images (free tier)
+
+**Folder Structure:**
+
+```
+/src
+├── pages/
+│   ├── index.tsx
+│   └── builder.tsx
+├── components/
+│   ├── PromptInput.tsx
+│   ├── OutlineEditor.tsx
+│   ├── SlideCard.tsx
+│   ├── SlidePromptModal.tsx
+│   ├── ImageUploader.tsx
+│   ├── ThemeSelector.tsx
+│   └── ExportButtons.tsx
+├── api/
+│   ├── generate-outline.ts
+│   ├── generate-slide.ts
+│   ├── upload-image.ts
+│   ├── upload-doc.ts
+│   ├── export.ts
+│   └── themes.ts
+├── utils/
+│   ├── parsePDF.ts
+│   ├── callLLM.ts
+│   ├── exportSlides.ts
+│   └── themes.ts
+```
+
+---
+
+## ✅ Prompt to Use in Replit/Cursor
+
+```plaintext
+Use the following project summary and folder/component map to scaffold a full-stack AI slide generation tool called "SlideCraft AI". Follow the PRD, UI/UX, and Implementation documents to:
+
+- Set up Next.js + Tailwind CSS boilerplate
+- Scaffold the `/builder` page with components: PromptInput, OutlineEditor, SlideCard, SlidePromptModal, ThemeSelector, ExportButtons
+- Backend routes to be placed in `/api`: generate-outline, generate-slide, upload-image, upload-doc, export, themes
+- Include utils: parsePDF.ts, callLLM.ts, exportSlides.ts, themes.ts
+
+Enable AI-based outline generation using prompt + uploaded documents. Include re-prompt functionality per slide, multi-image upload per slide, and theme-based export.
+
+Add clean, sleek styling inspired by Gamma.ai, and use free LLM APIs (Groq/Mistral, Together.ai) for all inference.
+
+Start with homepage `/index.tsx` and the full `/builder` page flow. Add placeholder components if needed.
+```
+
+---
+
+Would you like me to generate a full **README.md** or **feature roadmap** for this now?
